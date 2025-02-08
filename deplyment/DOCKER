@@ -1,0 +1,26 @@
+FROM ubuntu:latest
+
+# Update the package list and install Apache and PHP
+RUN apt-get update && \
+    apt-get install -y apache2 php git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set working directory to Apache's root directory
+WORKDIR /var/www/html
+
+# Clone the repository
+RUN git clone https://github.com/gijutsu-hub/hotel.git && \
+    rm -rf index.html && \
+    mv hotel/* ./ && \
+    mv hotel/.git ./ && \
+    rmdir hotel
+
+# Create a flag file and add content
+RUN echo "flags" > /var/www/flag.txt
+
+# Expose port 80 to access the Apache server
+EXPOSE 80
+
+# Start Apache server in the foreground
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
