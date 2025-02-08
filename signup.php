@@ -4,13 +4,17 @@ require 'vendor/autoload.php'; // Make sure AWS SDK is installed using Composer
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\Exception\AwsException;
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 // Initialize DynamoDB Client
 $dynamoDb = new DynamoDbClient([
     'region' => 'us-east-1', // Adjust to your AWS region
     'version' => 'latest',
     'credentials' => [
-        'key'    => '',
-        'secret' => '',
+       'key'    => getenv('KEY'),
+'secret' => getenv('SECRET'),
+
     ],
 ]);
 

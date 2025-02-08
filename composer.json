@@ -13,6 +13,7 @@
     ],
     "require": {
         "aws/aws-sdk-php": "^3.339",
-        "phpoffice/phpspreadsheet": "^3.9"
+        "phpoffice/phpspreadsheet": "^3.9",
+        "vlucas/phpdotenv": "^5.6"
     }
 }
