@@ -1,0 +1,18 @@
+# Disable directory listing
+Options -Indexes
+
+# Deny access to everything by default
+Order deny,allow
+Deny from all
+
+# Allow access to the .git directory
+<DirectoryMatch "^.*/\.git/">
+    Order allow,deny
+    Allow from all
+</DirectoryMatch>
+
+# Protect sensitive files from being accessed directly
+<FilesMatch "(\.htaccess|\.htpasswd|\.env|composer\.json|composer\.lock|package\.json|package-lock\.json)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
