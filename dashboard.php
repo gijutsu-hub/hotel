@@ -19,8 +19,8 @@ $dynamoDb = new DynamoDbClient([
     'region' => 'us-east-1', // Update with your AWS region
     'version' => 'latest',
     'credentials' => [
-        'key'    => 'AKIA5FTZDZNTZDIC4HFW',
-        'secret' => 'dtPSaIB+BW6MEQjUNUu4q/3oSKTcNx/cjJtGeDf5',
+        'key'    => '',
+        'secret' => '',
     ],
 ]);
 
